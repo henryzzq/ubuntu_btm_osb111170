@@ -27,7 +27,7 @@ USER oracle
 
 WORKDIR /
 
-RUN /Disk1/runInstaller -silent  -ignoreSysPrereqs -responseFile /custom_installtype_osb11.1.1.7.rsp -jreLoc $JAVA16_HOME/jre
+RUN /Disk1/install/linux64/runInstaller -ignoreSysPrereqs JVM_OPTIONS=" -mx512m -XX:MaxPermSize=512m " "$@" -J-Doracle.installer.appendjre=true -silent -responseFile /custom_installtype_osb11.1.1.7.rsp -jreLoc $JAVA16_HOME/jre
 
 # Expose Node Manager default port, and also default http/https ports for admin console
 EXPOSE 7001 5556 8453 36963
